@@ -17,6 +17,15 @@ data "azurerm_resource_group" "example" {
  name = "RGcreatedmannualy"
 }
 
+resource "azurerm_resource_group" "rg" {
+  name     = data.azurerm_resource_group.example.name
+  location = data.azurerm_resource_group.example.location
+  tags = {
+    "owner" = "arjun"
+    "env" = "dev"
+  }
+}
+
 output "id" {
     value = data.azurerm_resource_group.example.id
 }
